@@ -1,5 +1,6 @@
 package br.com.o8k.academy.exercsspringb.model.entity;
 
+import br.com.o8k.academy.exercsspringb.controller.request.PostStudentRequest;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,6 +19,12 @@ public class Student {
     public Student(long id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public static Student from(PostStudentRequest studentRequest) {
+        var student = new Student();
+        student.setName(studentRequest.getName());
+        return student;
     }
 
     public long getId() {
